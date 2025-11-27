@@ -24,7 +24,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="bg-gradient-to-r from-primary/5 to-accent/5 py-20 md:py-32">
+    <section className="bg-linear-to-r from-primary/5 to-accent/5 py-20 md:py-32">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center" initial="hidden" animate="visible" variants={containerVariants}>
           <div>
@@ -32,7 +32,7 @@ export default function HeroSection() {
               Layanan Aqiqah Berkualitas Untuk Keluarga Anda
             </motion.h1>
             <motion.p className="text-lg text-muted-foreground mb-8" variants={itemVariants}>
-              Aqiqah Payakumbuh menyediakan paket aqiqah lengkap dengan daging pilihan halal, menu lezat, dan pelayanan profesional untuk merayakan kelahiran buah hati Anda.
+              Aqiqah Payakumbuh menawarkan paket aqiqah bersertifikat resmi di Payakumbuh, menggunakan daging pilihan halal dan hidangan lezat, didukung pelayanan profesional untuk menyempurnakan acara aqiqah keluarga Anda.
             </motion.p>
             <motion.div className="flex gap-4" variants={itemVariants}>
               <motion.a href="/paket" className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -51,7 +51,7 @@ export default function HeroSection() {
             </motion.div>
           </div>
           <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} transition={{ duration: 0.3 }}>
-            <img src="/aqiqah-keluarga-halal-berkualitas.jpg" alt="Layanan Aqiqah Berkualitas" className="rounded-lg shadow-lg" />
+            <img src="/sertifikat.jpg" alt="Layanan Aqiqah Berkualitas" className="rounded-lg shadow-lg" />
           </motion.div>
         </motion.div>
       </div>
