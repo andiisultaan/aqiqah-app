@@ -1,10 +1,13 @@
 "use client";
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
+export const revalidate = 0;
+export const dynamicParams = true;
 
 import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Check, ShoppingCart, Phone, ArrowLeft } from "lucide-react";
-export const dynamic = "force-dynamic";
 
 export default function OrderPage() {
   const searchParams = useSearchParams();
