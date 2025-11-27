@@ -27,44 +27,44 @@ export default function Footer() {
                   Tentang Kami
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/blog" className="opacity-90 hover:opacity-100">
                   Blog
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div>
             <h4 className="font-semibold mb-4">Hubungi Kami</h4>
             <ul className="space-y-2 text-sm">
               <li>Telepon: 082385280309</li>
-              <li>Email: info@aqiqahpayakumbuh.com</li>
-              <li>Alamat: Jl. Merdeka No. 123, Payakumbuh, Sumatra Barat</li>
+              <li>Email: aqiqahpayakumbuh79@gmail.com</li>
+              <li>Alamat: Jln. Tan Malaka No. 225, Payakumbuh, Indonesia, West Sumatra</li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold mb-4">Sosial Media</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="opacity-90 hover:opacity-100">
+                <a href="https://www.facebook.com/aqiqahpayakumbuh" target="_blank" rel="noopener no referrer" className="opacity-90 hover:opacity-100">
                   Facebook
                 </a>
               </li>
               <li>
-                <a href="#" className="opacity-90 hover:opacity-100">
+                <a href="https://www.instagram.com/aqiqahpayakumbuh" target="_blank" rel="noopener no referrer" className="opacity-90 hover:opacity-100">
                   Instagram
                 </a>
               </li>
               <li>
-                <a href="#" className="opacity-90 hover:opacity-100">
-                  WhatsApp
+                <a href="https://www.tiktok.com/@aqiqahpayakumbuh" className="opacity-90 hover:opacity-100">
+                  TikTok
                 </a>
               </li>
             </ul>
           </div>
         </div>
         <div className="border-t border-primary-foreground/20 pt-8 text-center text-sm opacity-90">
-          <p>&copy; 2025 Aqiqah Payakumbuh. Semua hak dilindungi.</p>
+          <p>&copy; 2025 Aqiqah Payakumbuh.</p>
         </div>
       </div>
     </footer>

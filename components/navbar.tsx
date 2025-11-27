@@ -29,9 +29,9 @@ export default function Navbar() {
             <Link href="/tentang" className="text-foreground hover:text-primary transition">
               Tentang
             </Link>
-            <Link href="/blog" className="text-foreground hover:text-primary transition">
+            {/* <Link href="/blog" className="text-foreground hover:text-primary transition">
               Blog
-            </Link>
+            </Link> */}
             <Link href="/kontak" className="text-foreground hover:text-primary transition">
               Kontak
             </Link>
@@ -55,9 +55,9 @@ export default function Navbar() {
             <Link href="/tentang" className="block px-4 py-2 hover:bg-secondary rounded">
               Tentang
             </Link>
-            <Link href="/blog" className="block px-4 py-2 hover:bg-secondary rounded">
+            {/* <Link href="/blog" className="block px-4 py-2 hover:bg-secondary rounded">
               Blog
-            </Link>
+            </Link> */}
             <Link href="/kontak" className="block px-4 py-2 hover:bg-secondary rounded">
               Kontak
             </Link>

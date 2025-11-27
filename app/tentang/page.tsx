@@ -41,14 +41,13 @@ export default function TentangPage() {
               <motion.div variants={itemVariants}>
                 <h2 className="text-2xl font-bold text-primary mb-4">Profil Singkat</h2>
                 <p className="text-muted-foreground mb-4 leading-relaxed">
-                  Aqiqah Payakumbuh adalah layanan aqiqah terpercaya yang telah melayani ratusan keluarga di Payakumbuh dan sekitarnya. Dengan pengalaman lebih dari 10 tahun, kami berkomitmen memberikan layanan terbaik untuk acara aqiqah
-                  Anda.
+                  Aqiqah Payakumbuh adalah layanan aqiqah terpercaya yang telah melayani banyak keluarga di Payakumbuh dan sekitarnya. Kami berkomitmen memberikan layanan terbaik untuk acara aqiqah Anda.
                 </p>
                 <p className="text-muted-foreground mb-4 leading-relaxed">Tim profesional kami terdiri dari chef berpengalaman, staf yang terlatih, dan konsultan aqiqah yang siap membantu mewujudkan acara aqiqah yang sempurna.</p>
                 <p className="text-muted-foreground leading-relaxed">Kepuasan pelanggan adalah prioritas utama kami, dan kami selalu berusaha memberikan yang terbaik dalam setiap layanan.</p>
               </motion.div>
               <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} transition={{ type: "spring", stiffness: 300 }}>
-                <img src="/tim-aqiqah-profesional-layanan.jpg" alt="Tim Aqiqah Payakumbuh" className="rounded-lg shadow-lg" />
+                <img src="/bg-1.png" alt="Tim Aqiqah Payakumbuh" className="rounded-lg shadow-lg" />
               </motion.div>
             </motion.div>
 

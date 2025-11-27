@@ -108,7 +108,7 @@ Terima kasih!`;
                 {
                   icon: MapPin,
                   title: "Alamat",
-                  content: "Jl. Merdeka No. 123\nPayakumbuh, Sumatra Barat\nIndonesia",
+                  content: "Jln. Tan Malaka No. 225\nPayakumbuh, Indonesia\nWest Sumatra",
                 },
                 {
                   icon: Phone,
@@ -118,7 +118,7 @@ Terima kasih!`;
                 {
                   icon: Mail,
                   title: "Email",
-                  content: "info@aqiqahpayakumbuh.com",
+                  content: "aqiqahpayakumbuh79@gmail.com",
                 },
               ].map((item, index) => (
                 <motion.div key={index} className="bg-secondary/30 p-8 rounded-lg" variants={cardVariants} whileHover={{ y: -5, boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}>
@@ -135,7 +135,7 @@ Terima kasih!`;
               <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
                 <h2 className="text-2xl font-bold text-primary mb-6">Lokasi Kami</h2>
                 <motion.iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.9999999999995!2d100.81666!3d-0.21666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMMDAxMic0MC4wIlMgMTAwwrA0OCc1MS4yIkU!5e0!3m2!1sid!2sid!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3985.4729601353302!2d100.6442138749654!3d-0.2038363998291424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd54ac5655ea4cf%3A0xcdbe3f80930429ff!2sJl.%20Tan%20Malaka%20No.243-239%2C%20Napar%2C%20Kec.%20Payakumbuh%20Utara%2C%20Kota%20Payakumbuh%2C%20Sumatera%20Barat%2026219!5e0!3m2!1sen!2sid!4v1732768412345!5m2!1sen!2sid"
                   width="100%"
                   height="400"
                   style={{ border: 0, borderRadius: "0.5rem" }}

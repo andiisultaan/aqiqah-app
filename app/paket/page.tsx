@@ -108,7 +108,7 @@ export default function PaketPage() {
             </motion.div>
 
             {/* Custom Package Section */}
-            <motion.div
+            {/* <motion.div
               className="bg-secondary/30 p-8 rounded-lg text-center mt-16"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -128,7 +128,7 @@ export default function PaketPage() {
               >
                 Hubungi Kami
               </motion.a>
-            </motion.div>
+            </motion.div> */}
           </div>
         </section>
       </main>

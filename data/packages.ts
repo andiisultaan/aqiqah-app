@@ -134,7 +134,7 @@ export const packages: Package[] = [
     ],
     servings: "60 cup atau 120 porsi",
     included: [],
-    freeItems: ["Ongkir", "Sertifikat aqiqah", "Buku saku dzikir pagi petang", "Slub glass cantik", "Tas bekal anak", "Tumbmir minimum 500ml"],
+    freeItems: ["Ongkir", "Sertifikat aqiqah", "Buku saku dzikir pagi petang", "Slub glass cantik", "Tas bekal anak", "Tumbler minimum 500ml"],
   },
   {
     id: "paket-spesial-jantan",
@@ -152,7 +152,7 @@ export const packages: Package[] = [
     ],
     servings: "60 cup atau 120 porsi",
     included: [],
-    freeItems: ["Ongkir", "Sertifikat aqiqah", "Buku saku dzikir pagi petang", "Slub glass cantik", "Tas bekal anak", "Tumbmir minimum 500ml"],
+    freeItems: ["Ongkir", "Sertifikat aqiqah", "Buku saku dzikir pagi petang", "Slub glass cantik", "Tas bekal anak", "Tumbler minimum 500ml"],
   },
 
   // PAKET PREMIUM
@@ -172,7 +172,7 @@ export const packages: Package[] = [
     ],
     servings: "80 cup atau 160 porsi",
     included: [],
-    freeItems: ["Ongkir", "Sertifikat aqiqah", "Buku saku dzikir pagi petang", "Voucher diskon aqiqah", "Boneka domba cantik (klub glass cantik)", "Tas bekal anak", "Tumbmir minimum 800ml"],
+    freeItems: ["Ongkir", "Sertifikat aqiqah", "Buku saku dzikir pagi petang", "Voucher diskon aqiqah", "Boneka domba cantik (klub glass cantik)", "Tas bekal anak", "Tumbler minimum 800ml"],
   },
   {
     id: "paket-premium-jantan",
@@ -190,6 +190,6 @@ export const packages: Package[] = [
     ],
     servings: "80 cup atau 160 porsi",
     included: [],
-    freeItems: ["Ongkir", "Sertifikat aqiqah", "Buku saku dzikir pagi petang", "Voucher diskon aqiqah", "Boneka domba cantik (klub glass cantik)", "Tas bekal anak", "Tumbmir minimum 800ml"],
+    freeItems: ["Ongkir", "Sertifikat aqiqah", "Buku saku dzikir pagi petang", "Voucher diskon aqiqah", "Boneka domba cantik (klub glass cantik)", "Tas bekal anak", "Tumbler minimum 800ml"],
   },
 ];

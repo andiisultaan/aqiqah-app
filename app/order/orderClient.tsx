@@ -4,6 +4,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Check, ShoppingCart, Phone, ArrowLeft } from "lucide-react";
+import { toast } from "sonner";
 
 export default function OrderPage() {
   const searchParams = useSearchParams();
@@ -17,6 +18,7 @@ export default function OrderPage() {
     nama: "",
     alamat: "",
     noHp: "",
+    tanggalPemesanan: "",
   });
 
   useEffect(() => {
@@ -67,6 +69,24 @@ export default function OrderPage() {
     return total;
   };
 
+  const getMinDate = () => {
+    const today = new Date();
+    today.setDate(today.getDate() + 1);
+    return today.toISOString().split("T")[0];
+  };
+
+  const formatDateDisplay = (dateString: string) => {
+    if (!dateString) return "";
+    const date = new Date(dateString + "T00:00:00");
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    return date.toLocaleDateString("id-ID", options);
+  };
+
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -81,8 +101,8 @@ export default function OrderPage() {
       return;
     }
 
-    if (!formData.nama || !formData.alamat || !formData.noHp) {
-      alert("Silakan lengkapi semua data diri!");
+    if (!formData.nama || !formData.alamat || !formData.noHp || !formData.tanggalPemesanan) {
+      alert("Silakan lengkapi semua data diri dan pilih tanggal!");
       return;
     }
 
@@ -91,15 +111,37 @@ export default function OrderPage() {
       .map((item: { name: string | number; price: number }) => `• ${item.name} x${quantity[item.name] || 1}: Rp ${(item.price * (quantity[item.name] || 1)).toLocaleString("id-ID")}`)
       .join("\n");
 
-    const message = `Halo, saya ingin memesan:\n\n*DATA DIRI*\nNama: ${formData.nama}\nNo HP: ${formData.noHp}\nAlamat: ${formData.alamat}\n\n*${selectedPackage.name}* - ${
-      selectedPackage.category === "betina" ? "Kambing Betina" : "Kambing Jantan"
-    }\n\nMenu Pilihan:\n${selectedMenus}\n\n*Total: Rp ${calculateTotal().toLocaleString("id-ID")}*\n\nMohon informasi lebih lanjut dan proses pemesanan. Terima kasih!`;
+    const message = `Halo, saya ingin memesan:\n\n*DATA DIRI*\nNama: ${formData.nama}\nNo HP: ${formData.noHp}\nAlamat: ${formData.alamat}\n\n*TANGGAL PEMESANAN*\n${formatDateDisplay(formData.tanggalPemesanan)}\n\n*${
+      selectedPackage.name
+    }* - ${selectedPackage.category === "betina" ? "Kambing Betina" : "Kambing Jantan"}\n\nMenu Pilihan:\n${selectedMenus}\n\n*Total: Rp ${calculateTotal().toLocaleString(
+      "id-ID"
+    )}*\n\nMohon informasi lebih lanjut dan proses pemesanan. Terima kasih!`;
 
     const phoneNumber = "6282385280309";
     const encodedMessage = encodeURIComponent(message);
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
+    // Show toast with action button
+    toast.loading("Pesanan Anda sedang diproses...", {
+      id: "order-processing",
+      duration: Infinity,
+    });
+
+    // Open WhatsApp
     window.open(whatsappURL, "_blank");
+
+    // Wait a moment then show success toast with action
+    setTimeout(() => {
+      toast.dismiss("order-processing");
+      toast.success("Pesanan berhasil dikirim! 🎉", {
+        description: "WhatsApp Anda akan terbuka untuk konfirmasi dengan tim kami.",
+        action: {
+          label: "Kembali ke Paket",
+          onClick: () => router.push("/paket"),
+        },
+        duration: 5000,
+      });
+    }, 1500);
   };
 
   if (loading) {
@@ -239,6 +281,18 @@ export default function OrderPage() {
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200 resize-none"
                     />
                   </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">📅 Tanggal Pemesanan</label>
+                    <input
+                      type="date"
+                      name="tanggalPemesanan"
+                      value={formData.tanggalPemesanan}
+                      onChange={handleFormChange}
+                      min={getMinDate()}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200"
+                    />
+                  </div>
                 </div>
               </motion.div>
             </motion.div>
@@ -252,6 +306,7 @@ export default function OrderPage() {
                   <ShoppingCart size={20} />
                   Ringkasan Pesanan
                 </h3>
+                {formData.tanggalPemesanan && <p className="text-xs text-gray-500 mt-2">📅 {formatDateDisplay(formData.tanggalPemesanan)}</p>}
               </div>
 
               <div className="space-y-3 max-h-80 overflow-y-auto">
