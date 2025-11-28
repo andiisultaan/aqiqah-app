@@ -11,15 +11,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
-    "/paket/page": [
+    "/tentang/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/paket/page.js"
+      "static/chunks/app/tentang/page.js"
     ],
-    "/order/page": [
+    "/kontak/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/order/page.js"
+      "static/chunks/app/kontak/page.js"
     ]
   }
 }

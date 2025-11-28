@@ -7,15 +7,99 @@ import TestimonialsSection from "@/components/testimonials-section";
 import FloatingWhatsapp from "@/components/floating-whatsapp";
 import { packages } from "@/data/packages";
 import PackageCard from "@/components/package-card";
+import { Check } from "lucide-react";
 
 export default function HomePage() {
   const featuredPackages = packages.slice(0, 3);
+
+  // Video dari Cloudinary
+  const videoUrl = "https://res.cloudinary.com/dtueiq285/video/upload/v1764317943/video-aqiqah1_vapw8z.mp4";
+
+  // Deskripsi isi paket aqiqah
+  const packageContents = [
+    {
+      id: 1,
+      title: "Hewan Kurban Pilihan",
+      description: "Kambing atau domba berkualitas yang sehat dan siap kurban",
+    },
+    {
+      id: 2,
+      title: "Proses Penyembelihan Syariah",
+      description: "Dilakukan sesuai dengan tata cara Islam oleh ahli berpengalaman",
+    },
+    {
+      id: 3,
+      title: "Daging Berkualitas Premium",
+      description: "Daging segar dibersihkan dan dikemas dengan higienis",
+    },
+    {
+      id: 4,
+      title: "Distribusi ke Keluarga & Fakir Miskin",
+      description: "Daging didistribusikan sesuai keinginan Anda dan untuk kebaikan bersama",
+    },
+    {
+      id: 5,
+      title: "Konsultasi Gratis",
+      description: "Tim kami siap membantu menjawab semua pertanyaan Anda",
+    },
+    {
+      id: 6,
+      title: "Sertifikat Aqiqah",
+      description: "Dokumen resmi aqiqah sebagai bukti pelaksanaan ibadah",
+    },
+  ];
 
   return (
     <>
       <Navbar />
       <main>
         <HeroSection />
+
+        {/* Video Section dengan Deskripsi */}
+        <section className="py-16 md:py-24 bg-gradient-to-br from-primary-50 to-primary-100">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Lihat Layanan Kami</h2>
+              <p className="text-lg text-muted-foreground">Saksikan proses dan kualitas layanan aqiqah kami</p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {/* Deskripsi Paket - Kiri */}
+              <div className="order-2 lg:order-1">
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-8">Apa yang Anda Dapatkan</h3>
+                <div className="space-y-4">
+                  {packageContents.map(item => (
+                    <div key={item.id} className="flex gap-4">
+                      <div className="shrink-0">
+                        <Check className="w-6 h-6 text-primary mt-1" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-gray-800 mb-1">{item.title}</h4>
+                        <p className="text-sm text-muted-foreground">{item.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-8">
+                  <a href="/paket" className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition">
+                    Lihat Paket Sekarang!
+                  </a>
+                </div>
+              </div>
+
+              {/* Video - Kanan */}
+              <div className="order-1 lg:order-2">
+                <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow max-w-sm">
+                  <div className="bg-black">
+                    <video src={videoUrl} autoPlay muted loop playsInline controls className="w-full h-auto">
+                      Browser Anda tidak mendukung video HTML5
+                    </video>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="py-16 md:py-24 bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
