@@ -1,7 +1,7 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function FloatingWhatsapp() {
   const phoneNumber = "6282385280309";
@@ -13,7 +13,7 @@ export default function FloatingWhatsapp() {
       href={whatsappLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-all z-40"
+      className="fixed bottom-6 right-6 rounded-full p-4 transition-all z-40"
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.3 }}
@@ -21,7 +21,7 @@ export default function FloatingWhatsapp() {
       whileTap={{ scale: 0.95 }}
       aria-label="Chat di WhatsApp"
     >
-      <MessageCircle size={24} />
+      <Image src="/whatsapp.png" alt="WhatsApp" width={48} height={48} />
     </motion.a>
   );
 }

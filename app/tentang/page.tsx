@@ -34,7 +34,7 @@ export default function TentangPage() {
         <section className="py-16 md:py-24">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              <h1 className="text-4xl md:text-5xl font-bold text-primary mb-12">Tentang Kami</h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-12">Tentang Kami</h1>
             </motion.div>
 
             <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20" variants={containerVariants} initial="hidden" animate="visible">
@@ -52,7 +52,7 @@ export default function TentangPage() {
             </motion.div>
 
             <motion.div className="bg-secondary/30 p-8 rounded-lg mb-20" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
-              <h2 className="text-2xl font-bold text-primary mb-8">Visi & Misi</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-8">Visi & Misi</h2>
               <Accordion type="single" collapsible>
                 <AccordionItem value="visi">
                   <AccordionTrigger className="text-lg font-semibold text-primary">Visi</AccordionTrigger>
@@ -75,7 +75,7 @@ export default function TentangPage() {
             </motion.div>
 
             <motion.div className="mb-20">
-              <motion.h2 className="text-2xl font-bold text-primary mb-8" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
+              <motion.h2 className="text-2xl font-bold text-gray-800 mb-8" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
                 Legalitas & Sertifikasi
               </motion.h2>
               <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-8" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>

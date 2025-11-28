@@ -40,7 +40,7 @@ export default function PaketPage() {
         <section className="py-16 md:py-24">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div className="mb-16" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">Paket Aqiqah</h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Paket Aqiqah</h1>
               <p className="text-lg text-muted-foreground max-w-2xl">
                 Kami menawarkan berbagai paket aqiqah yang dapat disesuaikan dengan kebutuhan dan budget Anda. Semua paket dilengkapi dengan layanan profesional dan produk berkualitas.
               </p>

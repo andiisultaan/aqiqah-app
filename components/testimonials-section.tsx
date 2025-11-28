@@ -58,7 +58,7 @@ export default function TestimonialsSection() {
     <section className="py-16 md:py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div className="text-center mb-16" initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Testimoni Pelanggan</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Testimoni Pelanggan</h2>
           <p className="text-lg text-muted-foreground">Kepuasan pelanggan adalah prioritas kami</p>
         </motion.div>
 
@@ -69,7 +69,7 @@ export default function TestimonialsSection() {
                 <Card className="p-0 overflow-hidden hover:shadow-lg transition-shadow h-full">
                   <div className="relative w-full aspect-square overflow-hidden bg-gray-200">
                     <img src={testimonial.image || "/placeholder.svg"} alt={testimonial.name} className="w-full h-full object-cover transition-transform duration-300 hover:scale-110" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                    <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                       <p className="text-white font-semibold text-center text-sm">{testimonial.name}</p>
                     </div>
                   </div>
@@ -104,7 +104,7 @@ export default function TestimonialsSection() {
 
               {/* Info Footer */}
               {selectedImage.name && (
-                <div className="p-6 bg-gradient-to-r from-primary/5 to-primary/10 border-t border-gray-200">
+                <div className="p-6 bg-linear-to-r from-primary/5 to-primary/10 border-t border-gray-200">
                   <p className="text-xl font-bold text-gray-800">{selectedImage.name}</p>
                 </div>
               )}

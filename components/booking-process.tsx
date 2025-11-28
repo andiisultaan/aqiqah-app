@@ -60,7 +60,7 @@ export default function BookingProcess() {
     <section className="py-16 md:py-24 bg-secondary/30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div className="text-center mb-16" initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Alur Pemesanan</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Alur Pemesanan</h2>
           <p className="text-lg text-muted-foreground">Proses mudah dan transparan dari awal hingga akhir</p>
         </motion.div>
 

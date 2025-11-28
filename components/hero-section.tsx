@@ -28,7 +28,7 @@ export default function HeroSection() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center" initial="hidden" animate="visible" variants={containerVariants}>
           <div>
-            <motion.h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 leading-tight" variants={itemVariants}>
+            <motion.h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight" variants={itemVariants}>
               Layanan Aqiqah Berkualitas Untuk Keluarga Anda
             </motion.h1>
             <motion.p className="text-lg text-muted-foreground mb-8" variants={itemVariants}>

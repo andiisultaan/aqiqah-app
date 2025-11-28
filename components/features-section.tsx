@@ -50,7 +50,7 @@ export default function FeaturesSection() {
     <section className="py-16 md:py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div className="text-center mb-16" initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Keunggulan Kami</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Keunggulan Kami</h2>
           <p className="text-lg text-muted-foreground">Komitmen kami untuk memberikan layanan terbaik</p>
         </motion.div>
 
