@@ -5,6 +5,7 @@ import Footer from "@/components/footer";
 import FloatingWhatsapp from "@/components/floating-whatsapp";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { motion } from "framer-motion";
+import SocialMediaSection from "@/components/socialmedia-section";
 
 export default function TentangPage() {
   const containerVariants = {
@@ -106,6 +107,8 @@ export default function TentangPage() {
             </motion.div>
           </div>
         </section>
+
+        <SocialMediaSection />
       </main>
       <Footer />
       <FloatingWhatsapp />

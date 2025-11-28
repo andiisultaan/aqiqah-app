@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Package, packages } from "@/data/packages";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import SocialMediaSection from "@/components/socialmedia-section";
 
 export default function PaketPage() {
   const containerVariants = {
@@ -131,6 +132,7 @@ export default function PaketPage() {
             </motion.div> */}
           </div>
         </section>
+        <SocialMediaSection />
       </main>
       <Footer />
       <FloatingWhatsapp />

@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { generateWhatsAppLink } from "@/lib/whatsapp-message";
+import SocialMediaSection from "@/components/socialmedia-section";
 
 export default function KontakPage() {
   const [formData, setFormData] = useState({
@@ -174,6 +175,7 @@ Terima kasih!`;
             </div>
           </div>
         </section>
+        <SocialMediaSection />
       </main>
       <Footer />
       <FloatingWhatsapp />
