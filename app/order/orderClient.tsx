@@ -4,7 +4,6 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Check, ShoppingCart, Phone, ArrowLeft } from "lucide-react";
-import { toast } from "sonner";
 
 export default function OrderPage() {
   const searchParams = useSearchParams();
@@ -14,6 +13,7 @@ export default function OrderPage() {
   const [quantity, setQuantity] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [formData, setFormData] = useState({
     nama: "",
     alamat: "",
@@ -121,26 +121,12 @@ export default function OrderPage() {
     const encodedMessage = encodeURIComponent(message);
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-    // Show toast with action button
-    toast.loading("Pesanan Anda sedang diproses...", {
-      id: "order-processing",
-      duration: Infinity,
-    });
-
     // Open WhatsApp
     window.open(whatsappURL, "_blank");
 
-    // Wait a moment then show success toast with action
+    // Show success popup
     setTimeout(() => {
-      toast.dismiss("order-processing");
-      toast.success("Pesanan berhasil dikirim! 🎉", {
-        description: "WhatsApp Anda akan terbuka untuk konfirmasi dengan tim kami.",
-        action: {
-          label: "Kembali ke Paket",
-          onClick: () => router.push("/paket"),
-        },
-        duration: 5000,
-      });
+      setShowSuccessPopup(true);
     }, 1500);
   };
 
@@ -161,7 +147,7 @@ export default function OrderPage() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => router.push("/packages")}
+            onClick={() => router.push("/paket")}
             className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 mx-auto"
           >
             <ArrowLeft size={20} />
@@ -379,6 +365,60 @@ export default function OrderPage() {
           </motion.div>
         </div>
       </div>
+
+      {/* Custom Success Popup */}
+      <AnimatePresence>
+        {showSuccessPopup && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" onClick={() => setShowSuccessPopup(false)}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              onClick={e => e.stopPropagation()}
+              className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center"
+            >
+              <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2, type: "spring", stiffness: 300 }} className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Check size={32} className="text-green-600" />
+              </motion.div>
+
+              <motion.h2 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="text-2xl font-bold text-gray-800 mb-2">
+                Pesanan Berhasil! 🎉
+              </motion.h2>
+
+              <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-gray-600 mb-6">
+                Pesanan Anda telah berhasil dikirim via WhatsApp. Tim kami akan segera menghubungi Anda untuk konfirmasi pesanan.
+              </motion.p>
+
+              <div className="space-y-3">
+                <motion.button
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => router.push("/paket")}
+                  className="w-full bg-primary hover:bg-primary-700 text-white font-bold py-3 rounded-lg transition-all"
+                >
+                  Kembali ke Paket
+                </motion.button>
+
+                <motion.button
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setShowSuccessPopup(false)}
+                  className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 rounded-lg transition-all"
+                >
+                  Tutup
+                </motion.button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
