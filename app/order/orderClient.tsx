@@ -19,6 +19,16 @@ export default function OrderPage() {
     alamat: "",
     noHp: "",
     tanggalPemesanan: "",
+    keperluan: "",
+    jamPengantaran: "",
+    namaAnak: "",
+    tanggalLahirAnak: "",
+    jenisKelaminAnak: "",
+    namaAyah: "",
+    namaIbu: "",
+    sertifikat: "",
+    disaksikanOrtu: "",
+    ortuMenyembelih: "",
   });
 
   useEffect(() => {
@@ -87,7 +97,7 @@ export default function OrderPage() {
     return date.toLocaleDateString("id-ID", options);
   };
 
-  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -111,11 +121,17 @@ export default function OrderPage() {
       .map((item: { name: string | number; price: number }) => `• ${item.name} x${quantity[item.name] || 1}: Rp ${(item.price * (quantity[item.name] || 1)).toLocaleString("id-ID")}`)
       .join("\n");
 
-    const message = `Halo, saya ingin memesan:\n\n*DATA DIRI*\nNama: ${formData.nama}\nNo HP: ${formData.noHp}\nAlamat: ${formData.alamat}\n\n*TANGGAL PEMESANAN*\n${formatDateDisplay(formData.tanggalPemesanan)}\n\n*${
-      selectedPackage.name
-    }* - ${selectedPackage.category === "betina" ? "Kambing Betina" : "Kambing Jantan"}\n\nMenu Pilihan:\n${selectedMenus}\n\n*Total: Rp ${calculateTotal().toLocaleString(
+    const message = `Halo, saya ingin memesan:\n\n*DATA DIRI*\nNama: ${formData.nama}\nNo HP: ${formData.noHp}\nAlamat: ${formData.alamat}\nKeperluan: ${formData.keperluan || "-"}\nJam Pengantaran: ${
+      formData.jamPengantaran || "-"
+    }\n\n*Informasi Anak*\nNama Lengkap Anak: ${formData.namaAnak || "-"}\nTanggal Lahir Anak: ${formData.tanggalLahirAnak || "-"}\nJenis Kelamin: ${formData.jenisKelaminAnak || "-"}\n\n*Orang Tua*\nNama Ayah: ${
+      formData.namaAyah || "-"
+    }\nNama Ibu: ${formData.namaIbu || "-"}\n\n*Preferensi*\nDiberi Sertifikat?: ${formData.sertifikat || "-"}\nPenyembelihan disaksikan orang tua?: ${formData.disaksikanOrtu || "-"}\nOrang tua menyembelih langsung sendiri?: ${
+      formData.ortuMenyembelih || "-"
+    }\n\n*TANGGAL PEMESANAN*\n${formatDateDisplay(formData.tanggalPemesanan)}\n\n*${selectedPackage.name}* - ${
+      selectedPackage.category === "betina" ? "Kambing Betina" : "Kambing Jantan"
+    }\n\nMenu Pilihan:\n${selectedMenus}\n\n*Total: Rp ${calculateTotal().toLocaleString(
       "id-ID"
-    )}*\n\nMohon informasi lebih lanjut dan proses pemesanan. Terima kasih!`;
+    )}\n\nBRI 5503-01-026389-53-2\nBSI 7080923640\nBank Nagari 71000201058253\na/n Irwan Sumitra*\n\nMohon informasi lebih lanjut dan proses pemesanan. Terima kasih!`;
 
     const phoneNumber = "6282385280309";
     const encodedMessage = encodeURIComponent(message);
@@ -228,56 +244,197 @@ export default function OrderPage() {
               </motion.div>
 
               {/* Form Data Diri */}
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="mt-8 bg-primary-50 border border-primary-200 rounded-lg p-6">
-                <h3 className="text-lg font-bold text-gray-800 mb-4">📋 Data Diri</h3>
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="mt-8 bg-primary-50 border border-primary-200 rounded-lg p-6 space-y-6">
+                <div>
+                  <h3 className="text-lg font-bold text-gray-800 mb-4">📋 Data Diri</h3>
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap</label>
+                      <input
+                        type="text"
+                        name="nama"
+                        value={formData.nama}
+                        onChange={handleFormChange}
+                        placeholder="Masukkan nama lengkap Anda"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">No. HP / WhatsApp</label>
+                        <input
+                          type="tel"
+                          name="noHp"
+                          value={formData.noHp}
+                          onChange={handleFormChange}
+                          placeholder="Contoh: 08123456789"
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Keperluan</label>
+                        <select
+                          name="keperluan"
+                          value={formData.keperluan}
+                          onChange={handleFormChange}
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200 bg-white"
+                        >
+                          <option value="">Pilih keperluan</option>
+                          <option value="Aqiqah">Aqiqah</option>
+                          <option value="Nazar">Nazar</option>
+                          <option value="Pesta Pernikahan">Pesta Pernikahan</option>
+                          <option value="Kurban">Kurban</option>
+                          <option value="Lain-lain">Lain-lain</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Alamat Pengiriman</label>
+                        <textarea
+                          name="alamat"
+                          value={formData.alamat}
+                          onChange={handleFormChange}
+                          placeholder="Masukkan alamat lengkap pengiriman"
+                          rows={3}
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200 resize-none"
+                        />
+                      </div>
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-semibold text-gray-700 mb-2">Jam Pengantaran sampai di lokasi</label>
+                          <input
+                            type="text"
+                            name="jamPengantaran"
+                            value={formData.jamPengantaran}
+                            onChange={handleFormChange}
+                            placeholder="Contoh: 10.00 WIB"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-semibold text-gray-700 mb-2">📅 Tanggal Pemesanan</label>
+                          <input
+                            type="date"
+                            name="tanggalPemesanan"
+                            value={formData.tanggalPemesanan}
+                            onChange={handleFormChange}
+                            min={getMinDate()}
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
                 <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap</label>
-                    <input
-                      type="text"
-                      name="nama"
-                      value={formData.nama}
-                      onChange={handleFormChange}
-                      placeholder="Masukkan nama lengkap Anda"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200"
-                    />
+                  <h3 className="text-lg font-bold text-gray-800">🧒 Informasi Anak & Orang Tua</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap Anak</label>
+                      <input
+                        type="text"
+                        name="namaAnak"
+                        value={formData.namaAnak}
+                        onChange={handleFormChange}
+                        placeholder="Nama anak"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Tanggal Lahir Anak</label>
+                      <input
+                        type="date"
+                        name="tanggalLahirAnak"
+                        value={formData.tanggalLahirAnak}
+                        onChange={handleFormChange}
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Jenis Kelamin</label>
+                      <select
+                        name="jenisKelaminAnak"
+                        value={formData.jenisKelaminAnak}
+                        onChange={handleFormChange}
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200 bg-white"
+                      >
+                        <option value="">Pilih jenis kelamin</option>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                      </select>
+                    </div>
+                    <div />
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Nama Ayah</label>
+                      <input
+                        type="text"
+                        name="namaAyah"
+                        value={formData.namaAyah}
+                        onChange={handleFormChange}
+                        placeholder="Nama ayah"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Nama Ibu</label>
+                      <input
+                        type="text"
+                        name="namaIbu"
+                        value={formData.namaIbu}
+                        onChange={handleFormChange}
+                        placeholder="Nama ibu"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200"
+                      />
+                    </div>
                   </div>
+                </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">No. HP / WhatsApp</label>
-                    <input
-                      type="tel"
-                      name="noHp"
-                      value={formData.noHp}
-                      onChange={handleFormChange}
-                      placeholder="Contoh: 08123456789"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Alamat Pengiriman</label>
-                    <textarea
-                      name="alamat"
-                      value={formData.alamat}
-                      onChange={handleFormChange}
-                      placeholder="Masukkan alamat lengkap pengiriman"
-                      rows={3}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200 resize-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">📅 Tanggal Pemesanan</label>
-                    <input
-                      type="date"
-                      name="tanggalPemesanan"
-                      value={formData.tanggalPemesanan}
-                      onChange={handleFormChange}
-                      min={getMinDate()}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200"
-                    />
+                <div className="space-y-4">
+                  <h3 className="text-lg font-bold text-gray-800">✅ Preferensi & Tambahan</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Diberi sertifikat?</label>
+                      <select
+                        name="sertifikat"
+                        value={formData.sertifikat}
+                        onChange={handleFormChange}
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200 bg-white"
+                      >
+                        <option value="">Pilih</option>
+                        <option value="Ya">Ya</option>
+                        <option value="Tidak">Tidak</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Penyembelihan disaksikan orang tua?</label>
+                      <select
+                        name="disaksikanOrtu"
+                        value={formData.disaksikanOrtu}
+                        onChange={handleFormChange}
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200 bg-white"
+                      >
+                        <option value="">Pilih</option>
+                        <option value="Ya">Ya</option>
+                        <option value="Tidak">Tidak</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Orang tua menyembelih langsung sendiri?</label>
+                      <select
+                        name="ortuMenyembelih"
+                        value={formData.ortuMenyembelih}
+                        onChange={handleFormChange}
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-200 bg-white"
+                      >
+                        <option value="">Pilih</option>
+                        <option value="Ya">Ya</option>
+                        <option value="Tidak">Tidak</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </motion.div>
