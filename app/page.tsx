@@ -20,7 +20,7 @@ export default function HomePage() {
   const packageContents = [
     {
       id: 1,
-      title: "Hewan Kurban Pilihan",
+      title: "Hewan Aqiqah Pilihan",
       description: "Kambing atau domba berkualitas yang sehat dan siap kurban",
     },
     {
